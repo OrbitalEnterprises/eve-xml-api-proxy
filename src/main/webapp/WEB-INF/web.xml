@@ -35,7 +35,7 @@
 
   <servlet-mapping>
     <servlet-name>jersey</servlet-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/api/*</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -63,6 +63,6 @@
   </filter>
   <filter-mapping>
     <filter-name>ApiOriginFilter</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/api/*</url-pattern>
   </filter-mapping>
 </web-app>

@@ -79,6 +79,7 @@
               <directory>src/main/webapp</directory>
               <includes>
                 <include>**/web.xml</include>
+                <include>**/index.html</include>
               </includes>
             </resource>
           </webResources>

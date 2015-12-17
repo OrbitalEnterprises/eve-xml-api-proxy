@@ -7,7 +7,7 @@
   </parent>
   <artifactId>eve-xml-api-proxy</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <name>EVEXmlApi Proxy</name>
   <description>Web proxy which exposes a Swagger friendly API for making EVE XML API calls</description>
   

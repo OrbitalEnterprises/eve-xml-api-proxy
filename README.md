@@ -41,11 +41,11 @@ The EVE XML API proxy has Swagger annotated endpoints which makes it easy to use
 
 The REST API can be accessed directly by using the paths and arguments described in the API documentation.  However, you can also use the Swagger configuration file to automatically generate appropriate client code.  There are two ways to do this.
 
-For a Javascript client, there is no need to generate client code statically.  Instead, you can use the [Swagger Javascript](https://github.com/swagger-api/swagger-js) module.  For example, the following HTML snippet will create a Javascript client from the live proxy:
+For a Javascript client, there is no need to generate client code statically.  Instead, you can use the [Swagger Javascript](https://github.com/swagger-api/swagger-js) module.  For example, the following HTML snippet will create a Javascript client from the live proxy (note the use of rawgit.com to return a proper content type):
 
 ```html
 <!-- Set up Swagger -->
-<script src='https://raw.githubusercontent.com/swagger-api/swagger-js/master/browser/swagger-client.min.js' type='text/javascript'></script>
+<script src='https://cdn.rawgit.com/swagger-api/swagger-js/master/browser/swagger-client.min.js' type='text/javascript'></script>
 <script type="text/javascript">
   var url = "https://evexmlapi.orbital.enterprises/api/swagger.json";
   window.swagger = new SwaggerClient({ 
@@ -58,7 +58,7 @@ For a Javascript client, there is no need to generate client code statically.  I
 You can then invoke the client as follows:
 
 ```javascript
-window.swagger.Server.ServerStatus({}, {}, function () { /* called on success */ }, function () { /* called on failure */ });
+window.swagger.Server.requestServerStatus({}, {}, function () { /* called on success */ }, function () { /* called on failure */ });
 ```
 
 For a non-Javascript client, you can use the [Swagger Editor online demo](http://editor.swagger.io/#/).  Type in "https://evexmlapi.orbital.enterprises/swagger.json" under "File->Import URL..", then use the "Generate Client" menu to download an appropriate client.

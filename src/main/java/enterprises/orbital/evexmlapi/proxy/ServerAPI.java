@@ -23,13 +23,15 @@ import io.swagger.annotations.ApiResponses;
 /**
  * Implement Server API category calls.
  */
-@Path("/v1/server")
+@Path("/v2/server")
 @Produces({
     "application/json"
 })
-@Api(tags = {
-    "Server"
-}, produces = "application/json")
+@Api(
+    tags = {
+        "Server"
+    },
+    produces = "application/json")
 public class ServerAPI extends AbstractAPIEndpoint {
 
   @Path("/ServerStatus")
@@ -37,18 +39,30 @@ public class ServerAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve EVE Online server status",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/serv_serversstatus/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "EVE Online server status", response = IServerStatus.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "EVE Online server status",
+              response = IServerStatus.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestServerStatus(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestServerStatus(
+                                      @Context HttpServletRequest req,
+                                      @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IServerAPI serverAPI = api.getServerAPIService();

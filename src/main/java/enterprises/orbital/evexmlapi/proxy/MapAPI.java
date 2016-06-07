@@ -27,13 +27,15 @@ import io.swagger.annotations.ApiResponses;
 /**
  * Implement Map API category calls.
  */
-@Path("/v1/map")
+@Path("/v2/map")
 @Produces({
     "application/json"
 })
-@Api(tags = {
-    "Map"
-}, produces = "application/json")
+@Api(
+    tags = {
+        "Map"
+    },
+    produces = "application/json")
 public class MapAPI extends AbstractAPIEndpoint {
 
   @Path("/FacWarSystems")
@@ -41,18 +43,31 @@ public class MapAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve faction war systems information",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/map_facwarsystems/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "List of faction war systems", response = IFacWarSystem.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "List of faction war systems",
+              response = IFacWarSystem.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestFacWarSystems(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestFacWarSystems(
+                                       @Context HttpServletRequest req,
+                                       @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IMapAPI mapAPI = api.getMapAPIService();
@@ -66,19 +81,33 @@ public class MapAPI extends AbstractAPIEndpoint {
 
   @Path("/Jumps")
   @GET
-  @ApiOperation(value = "Retrieve system jumps", notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/map_jumps/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "System jump information", response = IMapJump.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve system jumps",
+      notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/map_jumps/")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "System jump information",
+              response = IMapJump.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestJumps(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestJumps(
+                               @Context HttpServletRequest req,
+                               @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IMapAPI mapAPI = api.getMapAPIService();
@@ -92,19 +121,33 @@ public class MapAPI extends AbstractAPIEndpoint {
 
   @Path("/Kills")
   @GET
-  @ApiOperation(value = "Retrieve system kills", notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/map_kills/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "System kill information", response = IMapKill.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve system kills",
+      notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/map_kills/")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "System kill information",
+              response = IMapKill.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestKills(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestKills(
+                               @Context HttpServletRequest req,
+                               @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IMapAPI mapAPI = api.getMapAPIService();
@@ -118,19 +161,33 @@ public class MapAPI extends AbstractAPIEndpoint {
 
   @Path("/Sovereignty")
   @GET
-  @ApiOperation(value = "Retrieve sovereignty status", notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/map_sovereignty/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Sovereignty information", response = ISovereignty.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve sovereignty status",
+      notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/map_sovereignty/")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Sovereignty information",
+              response = ISovereignty.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestSovereignty(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestSovereignty(
+                                     @Context HttpServletRequest req,
+                                     @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IMapAPI mapAPI = api.getMapAPIService();

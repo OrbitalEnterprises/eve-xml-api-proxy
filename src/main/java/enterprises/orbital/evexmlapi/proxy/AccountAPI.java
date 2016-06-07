@@ -28,23 +28,37 @@ import io.swagger.annotations.ApiResponses;
 /**
  * Implement Account API category calls.
  */
-@Path("/v1/account")
+@Path("/v2/account")
 @Produces({
     "application/json"
 })
-@Api(tags = {
-    "Account"
-}, produces = "application/json")
+@Api(
+    tags = {
+        "Account"
+    },
+    produces = "application/json")
 public class AccountAPI extends AbstractAPIEndpoint {
 
   @Path("/AccountStatus")
   @GET
-  @ApiOperation(value = "Retrieve account status", notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/account_accountstatus/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Account status", response = IAccountStatus.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve account status",
+      notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/account_accountstatus/")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Account status",
+              response = IAccountStatus.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -54,8 +68,14 @@ public class AccountAPI extends AbstractAPIEndpoint {
   public Response requestAccountStatus(
                                        @Context HttpServletRequest req,
                                        @Context UriInfo info,
-                                       @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                       @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode.") String vCode) {
+                                       @QueryParam("keyID") @ApiParam(
+                                           name = "keyID",
+                                           required = true,
+                                           value = "Access key ID") int keyID,
+                                       @QueryParam("vCode") @ApiParam(
+                                           name = "vCode",
+                                           required = true,
+                                           value = "Access vCode.") String vCode) {
     IEveXmlApi api = getApi(info);
     try {
       IAccountAPI accountAPI = api.getAccountAPIService(keyID, vCode);
@@ -69,12 +89,24 @@ public class AccountAPI extends AbstractAPIEndpoint {
 
   @Path("/APIKeyInfo")
   @GET
-  @ApiOperation(value = "Retrieve API key info", notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/account_apikeyinfo/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "API key info", response = IAPIKeyInfo.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve API key info",
+      notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/account_apikeyinfo/")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "API key info",
+              response = IAPIKeyInfo.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -84,8 +116,14 @@ public class AccountAPI extends AbstractAPIEndpoint {
   public Response requestAPIKeyInfo(
                                     @Context HttpServletRequest req,
                                     @Context UriInfo info,
-                                    @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                    @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode.") String vCode) {
+                                    @QueryParam("keyID") @ApiParam(
+                                        name = "keyID",
+                                        required = true,
+                                        value = "Access key ID") int keyID,
+                                    @QueryParam("vCode") @ApiParam(
+                                        name = "vCode",
+                                        required = true,
+                                        value = "Access vCode.") String vCode) {
     IEveXmlApi api = getApi(info);
     try {
       IAccountAPI accountAPI = api.getAccountAPIService(keyID, vCode);
@@ -102,11 +140,22 @@ public class AccountAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve account characters",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/account_characters/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Account character list", response = ICharacter.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Account character list",
+              response = ICharacter.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -116,8 +165,14 @@ public class AccountAPI extends AbstractAPIEndpoint {
   public Response requestCharacters(
                                     @Context HttpServletRequest req,
                                     @Context UriInfo info,
-                                    @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                    @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode.") String vCode) {
+                                    @QueryParam("keyID") @ApiParam(
+                                        name = "keyID",
+                                        required = true,
+                                        value = "Access key ID") int keyID,
+                                    @QueryParam("vCode") @ApiParam(
+                                        name = "vCode",
+                                        required = true,
+                                        value = "Access vCode.") String vCode) {
     IEveXmlApi api = getApi(info);
     try {
       IAccountAPI accountAPI = api.getAccountAPIService(keyID, vCode);

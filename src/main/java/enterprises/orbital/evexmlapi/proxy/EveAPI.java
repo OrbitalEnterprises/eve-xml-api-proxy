@@ -38,30 +38,47 @@ import io.swagger.annotations.ApiResponses;
 /**
  * Implement EVE API category calls.
  */
-@Path("/v1/eve")
+@Path("/v2/eve")
 @Produces({
     "application/json"
 })
-@Api(tags = {
-    "EVE"
-}, produces = "application/json")
+@Api(
+    tags = {
+        "EVE"
+    },
+    produces = "application/json")
 public class EveAPI extends AbstractAPIEndpoint {
 
   @Path("/AllianceList")
   @GET
-  @ApiOperation(value = "Request alliance list", notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_alliancelist/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Alliance list", response = IAlliance.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Request alliance list",
+      notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_alliancelist/")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Alliance list",
+              response = IAlliance.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestAlliances(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestAlliances(
+                                   @Context HttpServletRequest req,
+                                   @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IEveAPI eveAPI = api.getEveAPIService();
@@ -78,11 +95,22 @@ public class EveAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Request character affiliation by ID",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_characteraffiliation/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Character affiliation information", response = ICharacterAffiliation.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Character affiliation information",
+              response = ICharacterAffiliation.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -114,12 +142,25 @@ public class EveAPI extends AbstractAPIEndpoint {
 
   @Path("/CharacterID")
   @GET
-  @ApiOperation(value = "Request character ID by name", notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_characterid/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Character name list", response = ICharacterLookup.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Request character ID by name",
+      notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_characterid/")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Character name list",
+              response = ICharacterLookup.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -150,11 +191,21 @@ public class EveAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Request character information",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_characterinfo/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Character information", response = ICharacterInfo.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Character information",
+              response = ICharacterInfo.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -193,11 +244,22 @@ public class EveAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Request character name by ID",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_charactername/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Character ID list", response = ICharacterLookup.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Character ID list",
+              response = ICharacterLookup.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -232,18 +294,31 @@ public class EveAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Request conquerable station list",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_conquerablestationlist/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Conquerable station list", response = IConquerableStation.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Conquerable station list",
+              response = IConquerableStation.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestConquerableStations(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestConquerableStations(
+                                             @Context HttpServletRequest req,
+                                             @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IEveAPI eveAPI = api.getEveAPIService();
@@ -257,19 +332,34 @@ public class EveAPI extends AbstractAPIEndpoint {
 
   @Path("/ErrorList")
   @GET
-  @ApiOperation(value = "Request error code list", notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_errorlist/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Error code list", response = IError.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Request error code list",
+      notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_errorlist/")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Error code list",
+              response = IError.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestErrors(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestErrors(
+                                @Context HttpServletRequest req,
+                                @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IEveAPI eveAPI = api.getEveAPIService();
@@ -283,19 +373,33 @@ public class EveAPI extends AbstractAPIEndpoint {
 
   @Path("/FacWarStats")
   @GET
-  @ApiOperation(value = "Request faction war summary stats", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Faction war summary", response = IFacWarSummary.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Request faction war summary stats",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Faction war summary",
+              response = IFacWarSummary.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestFacWarStats(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestFacWarStats(
+                                     @Context HttpServletRequest req,
+                                     @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IEveAPI eveAPI = api.getEveAPIService();
@@ -309,19 +413,33 @@ public class EveAPI extends AbstractAPIEndpoint {
 
   @Path("/FacWarTopStats")
   @GET
-  @ApiOperation(value = "Request faction war summary top stats", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Faction war summary top stats", response = IFacWarTopSummary.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Request faction war summary top stats",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Faction war summary top stats",
+              response = IFacWarTopSummary.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestFacWarTopStats(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestFacWarTopStats(
+                                        @Context HttpServletRequest req,
+                                        @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IEveAPI eveAPI = api.getEveAPIService();
@@ -335,19 +453,34 @@ public class EveAPI extends AbstractAPIEndpoint {
 
   @Path("/RefTypes")
   @GET
-  @ApiOperation(value = "Request reference type list", notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_reftypes/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Reference type list", response = IRefType.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Request reference type list",
+      notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_reftypes/")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Reference type list",
+              response = IRefType.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestRefTypes(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestRefTypes(
+                                  @Context HttpServletRequest req,
+                                  @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IEveAPI eveAPI = api.getEveAPIService();
@@ -361,19 +494,34 @@ public class EveAPI extends AbstractAPIEndpoint {
 
   @Path("/SkillTree")
   @GET
-  @ApiOperation(value = "Request skill tree", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Skill tree", response = ISkillGroup.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Request skill tree",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Skill tree",
+              response = ISkillGroup.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
       required = false,
       dataType = "string",
       paramType = "query"))
-  public Response requestSkillTree(@Context HttpServletRequest req, @Context UriInfo info) {
+  public Response requestSkillTree(
+                                   @Context HttpServletRequest req,
+                                   @Context UriInfo info) {
     IEveXmlApi api = getApi(info);
     try {
       IEveAPI eveAPI = api.getEveAPIService();
@@ -387,12 +535,25 @@ public class EveAPI extends AbstractAPIEndpoint {
 
   @Path("/TypeName")
   @GET
-  @ApiOperation(value = "Request type information by ID", notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_typename/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Type information list", response = ITypeName.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Request type information by ID",
+      notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/eve_typename/")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Type information list",
+              response = ITypeName.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",

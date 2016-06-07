@@ -59,13 +59,15 @@ import io.swagger.annotations.ApiResponses;
 /**
  * Implement Corporation API category calls.
  */
-@Path("/v1/corp")
+@Path("/v2/corp")
 @Produces({
     "application/json"
 })
-@Api(tags = {
-    "Corporation"
-}, produces = "application/json")
+@Api(
+    tags = {
+        "Corporation"
+    },
+    produces = "application/json")
 public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/AccountBalance")
@@ -73,11 +75,22 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve corporation account balance",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/corp_accountbalance/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "List of account balances", response = IAccountBalance.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "List of account balances",
+              response = IAccountBalance.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -87,9 +100,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestAccountBalance(
                                         @Context HttpServletRequest req,
                                         @Context UriInfo info,
-                                        @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                        @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                        @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                        @QueryParam("keyID") @ApiParam(
+                                            name = "keyID",
+                                            required = true,
+                                            value = "Access key ID") int keyID,
+                                        @QueryParam("vCode") @ApiParam(
+                                            name = "vCode",
+                                            required = true,
+                                            value = "Access vCode") String vCode,
+                                        @QueryParam("charID") @ApiParam(
+                                            name = "charID",
+                                            required = true,
+                                            value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -106,11 +128,22 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve corporation asset list",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/corp_assetlist/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Asset list", response = IAsset.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Asset list",
+              response = IAsset.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -120,9 +153,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestAssets(
                                 @Context HttpServletRequest req,
                                 @Context UriInfo info,
-                                @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                @QueryParam("keyID") @ApiParam(
+                                    name = "keyID",
+                                    required = true,
+                                    value = "Access key ID") int keyID,
+                                @QueryParam("vCode") @ApiParam(
+                                    name = "vCode",
+                                    required = true,
+                                    value = "Access vCode") String vCode,
+                                @QueryParam("charID") @ApiParam(
+                                    name = "charID",
+                                    required = true,
+                                    value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -139,11 +181,22 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve corporation blueprints",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/corp_blueprints/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Blueprint list", response = IBlueprint.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Blueprint list",
+              response = IBlueprint.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -153,9 +206,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestBlueprints(
                                     @Context HttpServletRequest req,
                                     @Context UriInfo info,
-                                    @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                    @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                    @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                    @QueryParam("keyID") @ApiParam(
+                                        name = "keyID",
+                                        required = true,
+                                        value = "Access key ID") int keyID,
+                                    @QueryParam("vCode") @ApiParam(
+                                        name = "vCode",
+                                        required = true,
+                                        value = "Access vCode") String vCode,
+                                    @QueryParam("charID") @ApiParam(
+                                        name = "charID",
+                                        required = true,
+                                        value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -169,12 +231,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/Bookmarks")
   @GET
-  @ApiOperation(value = "Retrieve corporation bookmarks", notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/corp_bookmarks/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Corporation bookmark folder list", response = IBookmarkFolder.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation bookmarks",
+      notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/corp_bookmarks/")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Corporation bookmark folder list",
+              response = IBookmarkFolder.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -184,9 +259,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestBookmarks(
                                    @Context HttpServletRequest req,
                                    @Context UriInfo info,
-                                   @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                   @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                   @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                   @QueryParam("keyID") @ApiParam(
+                                       name = "keyID",
+                                       required = true,
+                                       value = "Access key ID") int keyID,
+                                   @QueryParam("vCode") @ApiParam(
+                                       name = "vCode",
+                                       required = true,
+                                       value = "Access vCode") String vCode,
+                                   @QueryParam("charID") @ApiParam(
+                                       name = "charID",
+                                       required = true,
+                                       value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -203,11 +287,21 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve corporation contact list",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/corp_contactlist/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Corporation contact list", response = IContactSet.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Corporation contact list",
+              response = IContactSet.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -217,9 +311,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestContacts(
                                   @Context HttpServletRequest req,
                                   @Context UriInfo info,
-                                  @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                  @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                  @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                  @QueryParam("keyID") @ApiParam(
+                                      name = "keyID",
+                                      required = true,
+                                      value = "Access key ID") int keyID,
+                                  @QueryParam("vCode") @ApiParam(
+                                      name = "vCode",
+                                      required = true,
+                                      value = "Access vCode") String vCode,
+                                  @QueryParam("charID") @ApiParam(
+                                      name = "charID",
+                                      required = true,
+                                      value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -233,12 +336,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/ContainerLog")
   @GET
-  @ApiOperation(value = "Retrieve container logs", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Corporation container log", response = IContainerLog.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve container logs",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Corporation container log",
+              response = IContainerLog.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -248,9 +364,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestContainerLogs(
                                        @Context HttpServletRequest req,
                                        @Context UriInfo info,
-                                       @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                       @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                       @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                       @QueryParam("keyID") @ApiParam(
+                                           name = "keyID",
+                                           required = true,
+                                           value = "Access key ID") int keyID,
+                                       @QueryParam("vCode") @ApiParam(
+                                           name = "vCode",
+                                           required = true,
+                                           value = "Access vCode") String vCode,
+                                       @QueryParam("charID") @ApiParam(
+                                           name = "charID",
+                                           required = true,
+                                           value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -267,11 +392,22 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve corporation contract list",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/corp_contracts/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Contract list", response = IContract.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Contract list",
+              response = IContract.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -281,9 +417,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestContracts(
                                    @Context HttpServletRequest req,
                                    @Context UriInfo info,
-                                   @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                   @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                   @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                   @QueryParam("keyID") @ApiParam(
+                                       name = "keyID",
+                                       required = true,
+                                       value = "Access key ID") int keyID,
+                                   @QueryParam("vCode") @ApiParam(
+                                       name = "vCode",
+                                       required = true,
+                                       value = "Access vCode") String vCode,
+                                   @QueryParam("charID") @ApiParam(
+                                       name = "charID",
+                                       required = true,
+                                       value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -300,11 +445,22 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve corporation contract bids",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/corp_contractbids/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Contract bid list", response = IContractBid.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Contract bid list",
+              response = IContractBid.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -314,9 +470,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestContractBids(
                                       @Context HttpServletRequest req,
                                       @Context UriInfo info,
-                                      @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                      @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                      @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                      @QueryParam("keyID") @ApiParam(
+                                          name = "keyID",
+                                          required = true,
+                                          value = "Access key ID") int keyID,
+                                      @QueryParam("vCode") @ApiParam(
+                                          name = "vCode",
+                                          required = true,
+                                          value = "Access vCode") String vCode,
+                                      @QueryParam("charID") @ApiParam(
+                                          name = "charID",
+                                          required = true,
+                                          value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -333,11 +498,22 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve contract items for the given contract ID",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/char_contractitems/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Contract items for the given contract ID", response = IContractItem.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Contract items for the given contract ID",
+              response = IContractItem.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -347,10 +523,22 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestContractItems(
                                        @Context HttpServletRequest req,
                                        @Context UriInfo info,
-                                       @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                       @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                       @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID,
-                                       @QueryParam("contractID") @ApiParam(name = "contractID", required = true, value = "Contract ID") long contractID) {
+                                       @QueryParam("keyID") @ApiParam(
+                                           name = "keyID",
+                                           required = true,
+                                           value = "Access key ID") int keyID,
+                                       @QueryParam("vCode") @ApiParam(
+                                           name = "vCode",
+                                           required = true,
+                                           value = "Access vCode") String vCode,
+                                       @QueryParam("charID") @ApiParam(
+                                           name = "charID",
+                                           required = true,
+                                           value = "Character ID") long characterID,
+                                       @QueryParam("contractID") @ApiParam(
+                                           name = "contractID",
+                                           required = true,
+                                           value = "Contract ID") long contractID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -364,12 +552,24 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/CorporationSheet")
   @GET
-  @ApiOperation(value = "Retrieve corporation sheet", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Corporation sheet", response = ICorporationSheet.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation sheet",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Corporation sheet",
+              response = ICorporationSheet.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -379,9 +579,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestCorporationSheet(
                                           @Context HttpServletRequest req,
                                           @Context UriInfo info,
-                                          @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                          @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                          @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID,
+                                          @QueryParam("keyID") @ApiParam(
+                                              name = "keyID",
+                                              required = true,
+                                              value = "Access key ID") int keyID,
+                                          @QueryParam("vCode") @ApiParam(
+                                              name = "vCode",
+                                              required = true,
+                                              value = "Access vCode") String vCode,
+                                          @QueryParam("charID") @ApiParam(
+                                              name = "charID",
+                                              required = true,
+                                              value = "Character ID") long characterID,
                                           @DefaultValue("-1") @QueryParam("corpID") @ApiParam(
                                               name = "corpID",
                                               required = false,
@@ -399,12 +608,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/CustomsOffices")
   @GET
-  @ApiOperation(value = "Retrieve corporation customs offices", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Customs offices", response = ICustomsOffice.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation customs offices",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Customs offices",
+              response = ICustomsOffice.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -414,9 +636,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestCustomsOffices(
                                         @Context HttpServletRequest req,
                                         @Context UriInfo info,
-                                        @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                        @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                        @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                        @QueryParam("keyID") @ApiParam(
+                                            name = "keyID",
+                                            required = true,
+                                            value = "Access key ID") int keyID,
+                                        @QueryParam("vCode") @ApiParam(
+                                            name = "vCode",
+                                            required = true,
+                                            value = "Access vCode") String vCode,
+                                        @QueryParam("charID") @ApiParam(
+                                            name = "charID",
+                                            required = true,
+                                            value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -430,12 +661,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/Facilities")
   @GET
-  @ApiOperation(value = "Retrieve corporation facilities", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Facilities list", response = IFacility.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation facilities",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Facilities list",
+              response = IFacility.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -445,9 +689,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestFacilities(
                                     @Context HttpServletRequest req,
                                     @Context UriInfo info,
-                                    @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                    @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                    @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                    @QueryParam("keyID") @ApiParam(
+                                        name = "keyID",
+                                        required = true,
+                                        value = "Access key ID") int keyID,
+                                    @QueryParam("vCode") @ApiParam(
+                                        name = "vCode",
+                                        required = true,
+                                        value = "Access vCode") String vCode,
+                                    @QueryParam("charID") @ApiParam(
+                                        name = "charID",
+                                        required = true,
+                                        value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -461,12 +714,24 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/FacWarStats")
   @GET
-  @ApiOperation(value = "Retrieve faction war stats for the faction the corporation is a member of", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Faction war stats", response = IFacWarStats.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve faction war stats for the faction the corporation is a member of",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Faction war stats",
+              response = IFacWarStats.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -476,9 +741,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestFacWarStats(
                                      @Context HttpServletRequest req,
                                      @Context UriInfo info,
-                                     @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                     @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                     @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                     @QueryParam("keyID") @ApiParam(
+                                         name = "keyID",
+                                         required = true,
+                                         value = "Access key ID") int keyID,
+                                     @QueryParam("vCode") @ApiParam(
+                                         name = "vCode",
+                                         required = true,
+                                         value = "Access vCode") String vCode,
+                                     @QueryParam("charID") @ApiParam(
+                                         name = "charID",
+                                         required = true,
+                                         value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -492,12 +766,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/IndustryJobs")
   @GET
-  @ApiOperation(value = "Retrieve corporation industry jobs", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Industry job list", response = IIndustryJob.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation industry jobs",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Industry job list",
+              response = IIndustryJob.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -507,9 +794,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestIndustryJobs(
                                       @Context HttpServletRequest req,
                                       @Context UriInfo info,
-                                      @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                      @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                      @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                      @QueryParam("keyID") @ApiParam(
+                                          name = "keyID",
+                                          required = true,
+                                          value = "Access key ID") int keyID,
+                                      @QueryParam("vCode") @ApiParam(
+                                          name = "vCode",
+                                          required = true,
+                                          value = "Access vCode") String vCode,
+                                      @QueryParam("charID") @ApiParam(
+                                          name = "charID",
+                                          required = true,
+                                          value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -523,12 +819,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/IndustryJobsHistory")
   @GET
-  @ApiOperation(value = "Retrieve historical industry jobs for corporation", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Historic industry job list", response = IIndustryJob.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve historical industry jobs for corporation",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Historic industry job list",
+              response = IIndustryJob.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -538,9 +847,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestIndustryJobsHistory(
                                              @Context HttpServletRequest req,
                                              @Context UriInfo info,
-                                             @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                             @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                             @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                             @QueryParam("keyID") @ApiParam(
+                                                 name = "keyID",
+                                                 required = true,
+                                                 value = "Access key ID") int keyID,
+                                             @QueryParam("vCode") @ApiParam(
+                                                 name = "vCode",
+                                                 required = true,
+                                                 value = "Access vCode") String vCode,
+                                             @QueryParam("charID") @ApiParam(
+                                                 name = "charID",
+                                                 required = true,
+                                                 value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -554,12 +872,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/KillMails")
   @GET
-  @ApiOperation(value = "Retrieve corporation kill mails", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Kill mail list", response = IKill.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation kill mails",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Kill mail list",
+              response = IKill.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -569,9 +900,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestKillMails(
                                    @Context HttpServletRequest req,
                                    @Context UriInfo info,
-                                   @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                   @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                   @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID,
+                                   @QueryParam("keyID") @ApiParam(
+                                       name = "keyID",
+                                       required = true,
+                                       value = "Access key ID") int keyID,
+                                   @QueryParam("vCode") @ApiParam(
+                                       name = "vCode",
+                                       required = true,
+                                       value = "Access vCode") String vCode,
+                                   @QueryParam("charID") @ApiParam(
+                                       name = "charID",
+                                       required = true,
+                                       value = "Character ID") long characterID,
                                    @DefaultValue("-1") @QueryParam("beforeKillID") @ApiParam(
                                        name = "beforeKillID",
                                        required = false,
@@ -589,12 +929,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/Locations")
   @GET
-  @ApiOperation(value = "Retrieve locations for given item IDs", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Location list", response = ILocation.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve locations for given item IDs",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Location list",
+              response = ILocation.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -604,9 +957,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestLocations(
                                    @Context HttpServletRequest req,
                                    @Context UriInfo info,
-                                   @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                   @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                   @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID,
+                                   @QueryParam("keyID") @ApiParam(
+                                       name = "keyID",
+                                       required = true,
+                                       value = "Access key ID") int keyID,
+                                   @QueryParam("vCode") @ApiParam(
+                                       name = "vCode",
+                                       required = true,
+                                       value = "Access vCode") String vCode,
+                                   @QueryParam("charID") @ApiParam(
+                                       name = "charID",
+                                       required = true,
+                                       value = "Character ID") long characterID,
                                    @QueryParam("itemID") @ApiParam(
                                        name = "itemID",
                                        required = true,
@@ -629,12 +991,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/MarketOrders")
   @GET
-  @ApiOperation(value = "Retrieve active market orders, or market order by ID", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Market order batch, or a single market order", response = IMarketOrder.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve active market orders, or market order by ID",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Market order batch, or a single market order",
+              response = IMarketOrder.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -644,9 +1019,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestMarketOrder(
                                      @Context HttpServletRequest req,
                                      @Context UriInfo info,
-                                     @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                     @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                     @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID,
+                                     @QueryParam("keyID") @ApiParam(
+                                         name = "keyID",
+                                         required = true,
+                                         value = "Access key ID") int keyID,
+                                     @QueryParam("vCode") @ApiParam(
+                                         name = "vCode",
+                                         required = true,
+                                         value = "Access vCode") String vCode,
+                                     @QueryParam("charID") @ApiParam(
+                                         name = "charID",
+                                         required = true,
+                                         value = "Character ID") long characterID,
                                      @DefaultValue("-1") @QueryParam("orderID") @ApiParam(
                                          name = "orderID",
                                          required = false,
@@ -670,12 +1054,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/Medals")
   @GET
-  @ApiOperation(value = "Retrieve awardable corporation medals", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Awardable corporation medals", response = ICorporationMedal.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve awardable corporation medals",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Awardable corporation medals",
+              response = ICorporationMedal.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -685,9 +1082,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestMedals(
                                 @Context HttpServletRequest req,
                                 @Context UriInfo info,
-                                @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                @QueryParam("keyID") @ApiParam(
+                                    name = "keyID",
+                                    required = true,
+                                    value = "Access key ID") int keyID,
+                                @QueryParam("vCode") @ApiParam(
+                                    name = "vCode",
+                                    required = true,
+                                    value = "Access vCode") String vCode,
+                                @QueryParam("charID") @ApiParam(
+                                    name = "charID",
+                                    required = true,
+                                    value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -701,12 +1107,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/MemberMedals")
   @GET
-  @ApiOperation(value = "Retrieve medals awarded by corporation", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "List of medals corporation has awarded", response = IMemberMedal.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve medals awarded by corporation",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "List of medals corporation has awarded",
+              response = IMemberMedal.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -716,9 +1135,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestMemberMedals(
                                       @Context HttpServletRequest req,
                                       @Context UriInfo info,
-                                      @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                      @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                      @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                      @QueryParam("keyID") @ApiParam(
+                                          name = "keyID",
+                                          required = true,
+                                          value = "Access key ID") int keyID,
+                                      @QueryParam("vCode") @ApiParam(
+                                          name = "vCode",
+                                          required = true,
+                                          value = "Access vCode") String vCode,
+                                      @QueryParam("charID") @ApiParam(
+                                          name = "charID",
+                                          required = true,
+                                          value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -732,12 +1160,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/MemberSecurity")
   @GET
-  @ApiOperation(value = "Retrieve corporation member security settings", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "List of member security settings", response = IMemberSecurity.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation member security settings",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "List of member security settings",
+              response = IMemberSecurity.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -747,9 +1188,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestMemberSecurity(
                                         @Context HttpServletRequest req,
                                         @Context UriInfo info,
-                                        @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                        @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                        @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                        @QueryParam("keyID") @ApiParam(
+                                            name = "keyID",
+                                            required = true,
+                                            value = "Access key ID") int keyID,
+                                        @QueryParam("vCode") @ApiParam(
+                                            name = "vCode",
+                                            required = true,
+                                            value = "Access vCode") String vCode,
+                                        @QueryParam("charID") @ApiParam(
+                                            name = "charID",
+                                            required = true,
+                                            value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -763,12 +1213,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/MemberSecurityLog")
   @GET
-  @ApiOperation(value = "Retrieve corporation member security changes log", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "List of member security changes", response = IMemberSecurityLog.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation member security changes log",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "List of member security changes",
+              response = IMemberSecurityLog.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -778,9 +1241,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestMemberSecurityLog(
                                            @Context HttpServletRequest req,
                                            @Context UriInfo info,
-                                           @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                           @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                           @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                           @QueryParam("keyID") @ApiParam(
+                                               name = "keyID",
+                                               required = true,
+                                               value = "Access key ID") int keyID,
+                                           @QueryParam("vCode") @ApiParam(
+                                               name = "vCode",
+                                               required = true,
+                                               value = "Access vCode") String vCode,
+                                           @QueryParam("charID") @ApiParam(
+                                               name = "charID",
+                                               required = true,
+                                               value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -794,12 +1266,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/MemberTracking")
   @GET
-  @ApiOperation(value = "Retrieve member tracking information", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Member tracking information list", response = IMemberTracking.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve member tracking information",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Member tracking information list",
+              response = IMemberTracking.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -809,9 +1294,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestMemberTracking(
                                         @Context HttpServletRequest req,
                                         @Context UriInfo info,
-                                        @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                        @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                        @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                        @QueryParam("keyID") @ApiParam(
+                                            name = "keyID",
+                                            required = true,
+                                            value = "Access key ID") int keyID,
+                                        @QueryParam("vCode") @ApiParam(
+                                            name = "vCode",
+                                            required = true,
+                                            value = "Access vCode") String vCode,
+                                        @QueryParam("charID") @ApiParam(
+                                            name = "charID",
+                                            required = true,
+                                            value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -825,12 +1319,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/OutpostList")
   @GET
-  @ApiOperation(value = "Retrieve corporation outposts", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Corporation outpost list", response = IOutpost.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation outposts",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Corporation outpost list",
+              response = IOutpost.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -840,9 +1347,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestOutpostList(
                                      @Context HttpServletRequest req,
                                      @Context UriInfo info,
-                                     @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                     @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                     @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                     @QueryParam("keyID") @ApiParam(
+                                         name = "keyID",
+                                         required = true,
+                                         value = "Access key ID") int keyID,
+                                     @QueryParam("vCode") @ApiParam(
+                                         name = "vCode",
+                                         required = true,
+                                         value = "Access vCode") String vCode,
+                                     @QueryParam("charID") @ApiParam(
+                                         name = "charID",
+                                         required = true,
+                                         value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -856,12 +1372,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/OutpostServiceDetail")
   @GET
-  @ApiOperation(value = "Retrieve service details for a given corporation outpost", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Service details for the provided outpost", response = IOutpostServiceDetail.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve service details for a given corporation outpost",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Service details for the provided outpost",
+              response = IOutpostServiceDetail.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -871,9 +1400,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestOutpostServiceDetail(
                                               @Context HttpServletRequest req,
                                               @Context UriInfo info,
-                                              @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                              @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                              @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID,
+                                              @QueryParam("keyID") @ApiParam(
+                                                  name = "keyID",
+                                                  required = true,
+                                                  value = "Access key ID") int keyID,
+                                              @QueryParam("vCode") @ApiParam(
+                                                  name = "vCode",
+                                                  required = true,
+                                                  value = "Access vCode") String vCode,
+                                              @QueryParam("charID") @ApiParam(
+                                                  name = "charID",
+                                                  required = true,
+                                                  value = "Character ID") long characterID,
                                               @QueryParam("itemID") @ApiParam(
                                                   name = "itemID",
                                                   required = true,
@@ -891,12 +1429,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/Shareholders")
   @GET
-  @ApiOperation(value = "Retrieve corporation shareholders", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Corporation shareholder list", response = IShareholder.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation shareholders",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Corporation shareholder list",
+              response = IShareholder.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -906,9 +1457,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestShareholders(
                                       @Context HttpServletRequest req,
                                       @Context UriInfo info,
-                                      @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                      @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                      @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                      @QueryParam("keyID") @ApiParam(
+                                          name = "keyID",
+                                          required = true,
+                                          value = "Access key ID") int keyID,
+                                      @QueryParam("vCode") @ApiParam(
+                                          name = "vCode",
+                                          required = true,
+                                          value = "Access vCode") String vCode,
+                                      @QueryParam("charID") @ApiParam(
+                                          name = "charID",
+                                          required = true,
+                                          value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -922,12 +1482,24 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/Standings")
   @GET
-  @ApiOperation(value = "Retrieve corporation standings", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Corporation standings with other entities", response = IStandingSet.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation standings",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Corporation standings with other entities",
+              response = IStandingSet.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -937,9 +1509,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestStandings(
                                    @Context HttpServletRequest req,
                                    @Context UriInfo info,
-                                   @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                   @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                   @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                   @QueryParam("keyID") @ApiParam(
+                                       name = "keyID",
+                                       required = true,
+                                       value = "Access key ID") int keyID,
+                                   @QueryParam("vCode") @ApiParam(
+                                       name = "vCode",
+                                       required = true,
+                                       value = "Access vCode") String vCode,
+                                   @QueryParam("charID") @ApiParam(
+                                       name = "charID",
+                                       required = true,
+                                       value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -953,12 +1534,24 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/StarbaseDetail")
   @GET
-  @ApiOperation(value = "Retrieve detail settings for a given starbase", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Details for the provided starbase", response = IStarbaseDetail.class),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve detail settings for a given starbase",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Details for the provided starbase",
+              response = IStarbaseDetail.class),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -968,9 +1561,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestStarbaseDetail(
                                         @Context HttpServletRequest req,
                                         @Context UriInfo info,
-                                        @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                        @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                        @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID,
+                                        @QueryParam("keyID") @ApiParam(
+                                            name = "keyID",
+                                            required = true,
+                                            value = "Access key ID") int keyID,
+                                        @QueryParam("vCode") @ApiParam(
+                                            name = "vCode",
+                                            required = true,
+                                            value = "Access vCode") String vCode,
+                                        @QueryParam("charID") @ApiParam(
+                                            name = "charID",
+                                            required = true,
+                                            value = "Character ID") long characterID,
                                         @QueryParam("posID") @ApiParam(
                                             name = "posID",
                                             required = true,
@@ -988,12 +1590,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/StarbaseList")
   @GET
-  @ApiOperation(value = "Retrieve corporation starbases", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Corporation starbase list", response = IStarbase.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation starbases",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Corporation starbase list",
+              response = IStarbase.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -1003,9 +1618,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestStarbaseList(
                                       @Context HttpServletRequest req,
                                       @Context UriInfo info,
-                                      @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                      @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                      @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                      @QueryParam("keyID") @ApiParam(
+                                          name = "keyID",
+                                          required = true,
+                                          value = "Access key ID") int keyID,
+                                      @QueryParam("vCode") @ApiParam(
+                                          name = "vCode",
+                                          required = true,
+                                          value = "Access vCode") String vCode,
+                                      @QueryParam("charID") @ApiParam(
+                                          name = "charID",
+                                          required = true,
+                                          value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -1019,12 +1643,25 @@ public class CorporationAPI extends AbstractAPIEndpoint {
 
   @Path("/Titles")
   @GET
-  @ApiOperation(value = "Retrieve corporation titles", notes = "TBD")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Corporation title list", response = ITitle.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiOperation(
+      value = "Retrieve corporation titles",
+      notes = "TBD")
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Corporation title list",
+              response = ITitle.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -1034,9 +1671,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestTitles(
                                 @Context HttpServletRequest req,
                                 @Context UriInfo info,
-                                @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID) {
+                                @QueryParam("keyID") @ApiParam(
+                                    name = "keyID",
+                                    required = true,
+                                    value = "Access key ID") int keyID,
+                                @QueryParam("vCode") @ApiParam(
+                                    name = "vCode",
+                                    required = true,
+                                    value = "Access vCode") String vCode,
+                                @QueryParam("charID") @ApiParam(
+                                    name = "charID",
+                                    required = true,
+                                    value = "Character ID") long characterID) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
@@ -1053,11 +1699,22 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve corporation wallet journal",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/corp_walletjournal/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Wallet journal", response = IWalletJournalEntry.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Wallet journal",
+              response = IWalletJournalEntry.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -1067,9 +1724,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestWalletJournalEntries(
                                               @Context HttpServletRequest req,
                                               @Context UriInfo info,
-                                              @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                              @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                              @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID,
+                                              @QueryParam("keyID") @ApiParam(
+                                                  name = "keyID",
+                                                  required = true,
+                                                  value = "Access key ID") int keyID,
+                                              @QueryParam("vCode") @ApiParam(
+                                                  name = "vCode",
+                                                  required = true,
+                                                  value = "Access vCode") String vCode,
+                                              @QueryParam("charID") @ApiParam(
+                                                  name = "charID",
+                                                  required = true,
+                                                  value = "Character ID") long characterID,
                                               @QueryParam("account") @ApiParam(
                                                   name = "account",
                                                   required = true,
@@ -1095,11 +1761,22 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   @ApiOperation(
       value = "Retrieve corporation wallet transactions",
       notes = "http://eveonline-third-party-documentation.readthedocs.org/en/latest/xmlapi/corp_wallettransactions/")
-  @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Wallet transactions", response = IWalletTransaction.class, responseContainer = "array"),
-      @ApiResponse(code = 404, message = "EVE XML API server error", response = EveServerError.class),
-      @ApiResponse(code = 500, message = "Proxy service error", response = ServiceError.class),
-  })
+  @ApiResponses(
+      value = {
+          @ApiResponse(
+              code = 200,
+              message = "Wallet transactions",
+              response = IWalletTransaction.class,
+              responseContainer = "array"),
+          @ApiResponse(
+              code = 404,
+              message = "EVE XML API server error",
+              response = EveServerError.class),
+          @ApiResponse(
+              code = 500,
+              message = "Proxy service error",
+              response = ServiceError.class),
+      })
   @ApiImplicitParams(@ApiImplicitParam(
       name = "server",
       value = "Optional EVE XML server URL override",
@@ -1109,9 +1786,18 @@ public class CorporationAPI extends AbstractAPIEndpoint {
   public Response requestWalletTransactions(
                                             @Context HttpServletRequest req,
                                             @Context UriInfo info,
-                                            @QueryParam("keyID") @ApiParam(name = "keyID", required = true, value = "Access key ID") int keyID,
-                                            @QueryParam("vCode") @ApiParam(name = "vCode", required = true, value = "Access vCode") String vCode,
-                                            @QueryParam("charID") @ApiParam(name = "charID", required = true, value = "Character ID") long characterID,
+                                            @QueryParam("keyID") @ApiParam(
+                                                name = "keyID",
+                                                required = true,
+                                                value = "Access key ID") int keyID,
+                                            @QueryParam("vCode") @ApiParam(
+                                                name = "vCode",
+                                                required = true,
+                                                value = "Access vCode") String vCode,
+                                            @QueryParam("charID") @ApiParam(
+                                                name = "charID",
+                                                required = true,
+                                                value = "Character ID") long characterID,
                                             @QueryParam("account") @ApiParam(
                                                 name = "account",
                                                 required = true,

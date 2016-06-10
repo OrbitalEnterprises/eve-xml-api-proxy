@@ -4,7 +4,7 @@ This module provides a servlet which exposes a REST API for accessing the [EVE X
 
 We use [Swagger](http://swagger.io) to annotate our REST API, which in turn makes it trivial to generate documentation and experiment with the API, as well as generate client libraries in various languages.
 
-We run a live instance of this servlet at https://evexmlapi.orbital.enterprises.  The examples below show how to use Swagger with the live instance.  However, you can also run the servlet locally, and use an appropriate local URI with the Swagger tools.  There are instructions below for running a local instance using [Tomcat 7](http://tomcat.apache.org/download-70.cgi).
+We run a live instance of this servlet at https://evekit.orbital.enterprises/xmlproxy.  The examples below show how to use Swagger with the live instance.  However, you can also run the servlet locally, and use an appropriate local URI with the Swagger tools.  There are instructions below for running a local instance using [Tomcat 7](http://tomcat.apache.org/download-70.cgi).
 
 ## Build
 
@@ -35,7 +35,7 @@ If you want to run unit tests, you'll also need:
 
 ### Viewing Documentation and Trying the API with Swagger
 
-The EVE XML API proxy has Swagger annotated endpoints which makes it easy to use the Swagger tooling.  For the live proxy, the Swagger configuration file is available at https://evexmlapi.orbital.enterprises/api/swagger.json.  This URI can be provided as input to Swagger tooling in order to view documentation and try out the API.  For example, the following link will invoke the [Swagger UI online demo](http://petstore.swagger.io) against the live proxy: http://petstore.swagger.io/?url=https://evexmlapi.orbital.enterprises/swagger.json.  From the UI demo, you can then invoke any of the exposed API endpoints. 
+The EVE XML API proxy has Swagger annotated endpoints which makes it easy to use the Swagger tooling.  For the live proxy, the Swagger configuration file is available at https://evekit.orbital.enterprises/xmlproxy/api/swagger.json.  This URI can be provided as input to Swagger tooling in order to view documentation and try out the API.  For example, the following link will invoke the [Swagger UI online demo](http://petstore.swagger.io) against the live proxy: http://petstore.swagger.io/?url=https://evekit.orbital.enterprises/xmlproxy/api/swagger.json.  From the UI demo, you can then invoke any of the exposed API endpoints. 
 
 ### Using Swagger to Generate Client Code
 
@@ -47,7 +47,7 @@ For a Javascript client, there is no need to generate client code statically.  I
 <!-- Set up Swagger -->
 <script src='https://cdn.rawgit.com/swagger-api/swagger-js/master/browser/swagger-client.min.js' type='text/javascript'></script>
 <script type="text/javascript">
-  var url = "https://evexmlapi.orbital.enterprises/api/swagger.json";
+  var url = "https://evekit.orbital.enterprises/xmlproxy/api/swagger.json";
   window.swagger = new SwaggerClient({ 
     url: url,
     success: function() { /* called when the client is ready */ }
@@ -61,7 +61,7 @@ You can then invoke the client as follows:
 window.swagger.Server.requestServerStatus({}, {}, function () { /* called on success */ }, function () { /* called on failure */ });
 ```
 
-For a non-Javascript client, you can use the [Swagger Editor online demo](http://editor.swagger.io/#/).  Type in "https://evexmlapi.orbital.enterprises/swagger.json" under "File->Import URL..", then use the "Generate Client" menu to download an appropriate client.
+For a non-Javascript client, you can use the [Swagger Editor online demo](http://editor.swagger.io/#/).  Type in "https://evekit.orbital.enterprises/xmlproxy/api/swagger.json" under "File->Import URL..", then use the "Generate Client" menu to download an appropriate client.
  
 ## Deployment
 

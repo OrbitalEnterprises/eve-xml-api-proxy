@@ -7,11 +7,11 @@
   </parent>
   <artifactId>eve-xml-api-proxy</artifactId>
   <packaging>war</packaging>
-  <version>2.0.0</version>
+  <version>2.1.0</version>
   <name>EVEXmlApi Proxy</name>
   <description>Web proxy which exposes a Swagger friendly API for making EVE XML API calls</description>
   <properties>
-    <orbital.toolchain.version>2.0.0</orbital.toolchain.version>
+    <orbital.toolchain.version>2.1.0</orbital.toolchain.version>
     <servlet.version>3.1.0</servlet.version>
     <swagger.version>1.5.4</swagger.version>
     <slf4j.version>1.6.4</slf4j.version>

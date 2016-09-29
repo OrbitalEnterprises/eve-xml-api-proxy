@@ -226,10 +226,10 @@ public class CharacterAPI extends AbstractAPIEndpoint {
                                                     name = "eventID",
                                                     required = true,
                                                     value = "Event IDs to retrieve attendees for",
-                                                    allowMultiple = true) List<Integer> eventID) {
+                                                    allowMultiple = true) List<Long> eventID) {
     IEveXmlApi api = getApi(info);
     try {
-      int[] ids = new int[eventID.size()];
+      long[] ids = new long[eventID.size()];
       for (int i = 0; i < ids.length; i++) {
         ids[i] = eventID.get(i);
       }

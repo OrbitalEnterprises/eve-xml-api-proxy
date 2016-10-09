@@ -164,11 +164,17 @@ public class CorporationAPI extends AbstractAPIEndpoint {
                                 @QueryParam("charID") @ApiParam(
                                     name = "charID",
                                     required = true,
-                                    value = "Character ID") long characterID) {
+                                    value = "Character ID") long characterID,
+                                @QueryParam("flat") @DefaultValue(
+                                    value = "false") @ApiParam(
+                                        name = "flat",
+                                        required = false,
+                                        defaultValue = "false",
+                                        value = "If true, return a flat asset list") boolean flat) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
-      Collection<IAsset> assets = corpAPI.requestAssets();
+      Collection<IAsset> assets = corpAPI.requestAssets(flat);
       if (corpAPI.isError()) return makeResponseErrorResponse(corpAPI);
       return makeResponse(corpAPI, assets);
     } catch (IOException e) {

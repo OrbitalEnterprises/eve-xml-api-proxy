@@ -168,11 +168,17 @@ public class CharacterAPI extends AbstractAPIEndpoint {
                                 @QueryParam("charID") @ApiParam(
                                     name = "charID",
                                     required = true,
-                                    value = "Character ID") long characterID) {
+                                    value = "Character ID") long characterID,
+                                @QueryParam("flat") @DefaultValue(
+                                    value = "false") @ApiParam(
+                                        name = "flat",
+                                        required = false,
+                                        defaultValue = "false",
+                                        value = "If true, return a flat asset list") boolean flat) {
     IEveXmlApi api = getApi(info);
     try {
       ICharacterAPI charAPI = api.getCharacterAPIService(keyID, vCode, characterID);
-      Collection<IAsset> assets = charAPI.requestAssets();
+      Collection<IAsset> assets = charAPI.requestAssets(flat);
       if (charAPI.isError()) return makeResponseErrorResponse(charAPI);
       return makeResponse(charAPI, assets);
     } catch (IOException e) {
@@ -226,10 +232,10 @@ public class CharacterAPI extends AbstractAPIEndpoint {
                                                     name = "eventID",
                                                     required = true,
                                                     value = "Event IDs to retrieve attendees for",
-                                                    allowMultiple = true) List<Integer> eventID) {
+                                                    allowMultiple = true) List<Long> eventID) {
     IEveXmlApi api = getApi(info);
     try {
-      int[] ids = new int[eventID.size()];
+      long[] ids = new long[eventID.size()];
       for (int i = 0; i < ids.length; i++) {
         ids[i] = eventID.get(i);
       }

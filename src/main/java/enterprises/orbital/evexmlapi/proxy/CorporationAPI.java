@@ -164,11 +164,17 @@ public class CorporationAPI extends AbstractAPIEndpoint {
                                 @QueryParam("charID") @ApiParam(
                                     name = "charID",
                                     required = true,
-                                    value = "Character ID") long characterID) {
+                                    value = "Character ID") long characterID,
+                                @QueryParam("flat") @DefaultValue(
+                                    value = "false") @ApiParam(
+                                        name = "flat",
+                                        required = false,
+                                        defaultValue = "false",
+                                        value = "If true, return a flat asset list") boolean flat) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
-      Collection<IAsset> assets = corpAPI.requestAssets();
+      Collection<IAsset> assets = corpAPI.requestAssets(flat);
       if (corpAPI.isError()) return makeResponseErrorResponse(corpAPI);
       return makeResponse(corpAPI, assets);
     } catch (IOException e) {
@@ -594,6 +600,7 @@ public class CorporationAPI extends AbstractAPIEndpoint {
                                           @DefaultValue("-1") @QueryParam("corpID") @ApiParam(
                                               name = "corpID",
                                               required = false,
+                                              defaultValue = "-1",
                                               value = "If specified, retrieve the public corporation sheet of the corporation with the given ID (instead of the corporation associated with this key)") long corpID) {
     IEveXmlApi api = getApi(info);
     try {
@@ -915,6 +922,7 @@ public class CorporationAPI extends AbstractAPIEndpoint {
                                    @DefaultValue("-1") @QueryParam("beforeKillID") @ApiParam(
                                        name = "beforeKillID",
                                        required = false,
+                                       defaultValue = "-1",
                                        value = "If present, the upper bound for the kill ID of the returned kills (see third party docs)") long beforeKillID) {
     IEveXmlApi api = getApi(info);
     try {
@@ -1034,6 +1042,7 @@ public class CorporationAPI extends AbstractAPIEndpoint {
                                      @DefaultValue("-1") @QueryParam("orderID") @ApiParam(
                                          name = "orderID",
                                          required = false,
+                                         defaultValue = "-1",
                                          value = "If specified, retrieve the market order with the given ID") long orderID) {
     IEveXmlApi api = getApi(info);
     try {
@@ -1305,11 +1314,16 @@ public class CorporationAPI extends AbstractAPIEndpoint {
                                         @QueryParam("charID") @ApiParam(
                                             name = "charID",
                                             required = true,
-                                            value = "Character ID") long characterID) {
+                                            value = "Character ID") long characterID,
+                                        @QueryParam("extended") @DefaultValue("false") @ApiParam(
+                                            name = "extended",
+                                            required = true,
+                                            defaultValue = "false",
+                                            value = "If true, return extended results") boolean extended) {
     IEveXmlApi api = getApi(info);
     try {
       ICorporationAPI corpAPI = api.getCorporationAPIService(keyID, vCode, characterID);
-      Collection<IMemberTracking> medals = corpAPI.requestMemberTracking();
+      Collection<IMemberTracking> medals = corpAPI.requestMemberTracking(extended);
       if (corpAPI.isError()) return makeResponseErrorResponse(corpAPI);
       return makeResponse(corpAPI, medals);
     } catch (IOException e) {
@@ -1743,6 +1757,7 @@ public class CorporationAPI extends AbstractAPIEndpoint {
                                               @DefaultValue("-1") @QueryParam("beforeRefID") @ApiParam(
                                                   name = "beforeRefID",
                                                   required = false,
+                                                  defaultValue = "-1",
                                                   value = "If present, the upper bound for the ref ID of returned journal entries (see third party docs)") long beforeRefID) {
     IEveXmlApi api = getApi(info);
     try {
@@ -1805,6 +1820,7 @@ public class CorporationAPI extends AbstractAPIEndpoint {
                                             @DefaultValue("-1") @QueryParam("beforeTransID") @ApiParam(
                                                 name = "beforeTransID",
                                                 required = false,
+                                                defaultValue = "-1",
                                                 value = "If present, the upper bound for the transaction ID of the returned transactions (see third party docs)") long beforeTransID) {
     IEveXmlApi api = getApi(info);
     try {
